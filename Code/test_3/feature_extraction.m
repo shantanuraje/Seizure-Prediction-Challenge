@@ -1,45 +1,47 @@
 function feature_extraction(data,one_min_blocks)
-
+tic();
 for i=1:2:size(one_min_blocks,1)
 	temp_data=data(:,one_min_blocks(i):one_min_blocks(i+1));
 	fft_temp_data=fft(temp_data,[],2);
 	fft_temp_data_magnitude=abs(fft_temp_data);
-	tic();
+	
 	figure(1);
 	plot(temp_data(1,:));
 	title('Time domain signal');
 	xlabel('Samples');
 	ylabel('Amplitude');
-	toc()
+	hold on;
+	
 
-	tic();
+	
 	figure(2);
 	plot(1:length(fft_temp_data),fft_temp_data_magnitude(1,:));
 	title('Magnitude Spectrum');
 	xlabel('DFT Bins');
 	ylabel('Magnitude');
-	toc()
+	hold on;
+	
 
-	tic();
+	
 	half_num_bins=length(fft_temp_data_magnitude)*0.5;
 	figure(3);
 	plot(0:1/(half_num_bins-1):1,fft_temp_data_magnitude(1,1:half_num_bins));
 	title('First half of DFT : Normalised Frequency');
 	xlabel('Normalised Frequency pi rads/sample');
 	ylabel('Magnitude');
-	toc()	
+	hold on;
 	
-	tic();
-	n=pow2(nextpow2(length(fft_temp_data_magnitude)));
-	frequency=(0:n-1)*399.61/n*3.14;
 	
-	keyboard();
+	
+	n=length(fft_temp_data_magnitude);
+	f=(0:n/2-1)/(2*(n/2-1))*400;
 	figure(4);
-	plot(frequency,fft_temp_data_magnitude(1,1:half_num_bins));
+	plot(f,fft_temp_data_magnitude(1,1:n/2));
 	title('First half of DFT : Frequency');
 	xlabel('Frequency (Hz)');
 	ylabel('Magnitude');
-	toc()	
-	
-	keyboard();
+	hold on;
+		
 end
+toc()
+keyboard();
