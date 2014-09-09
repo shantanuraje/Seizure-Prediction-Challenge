@@ -1,0 +1,1 @@
+function plot_data(temp_data,fft_temp_data)

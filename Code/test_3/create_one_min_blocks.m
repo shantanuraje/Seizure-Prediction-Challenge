@@ -1,0 +1,11 @@
+function one_min_blocks = create_one_min_blocks(data,data_length_sec,sampling_frequency)
+tic();
+one_min_samples=round(sampling_frequency*60);
+num_of_blocks=round(data_length_sec/60);
+one_min_samples=[1,one_min_samples*[1:num_of_blocks-1],length(data)];
+one_min_blocks=[];
+
+for i=1:num_of_blocks
+  one_min_blocks=[one_min_blocks;one_min_samples(i);one_min_samples(i+1)-1];
+end
+toc()

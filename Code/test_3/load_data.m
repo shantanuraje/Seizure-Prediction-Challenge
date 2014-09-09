@@ -1,0 +1,6 @@
+
+data=interictal_segment_1.data;
+data_length_sec=interictal_segment_1.data_length_sec;
+channels=interictal_segment_1.channels;
+sampling_frequency=interictal_segment_1.sampling_frequency;
+sequence=interictal_segment_1.sequence;

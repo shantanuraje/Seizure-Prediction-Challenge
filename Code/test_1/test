@@ -1,0 +1,16 @@
+load('Dog_1_interictal_segment_0001.mat');
+load('Dog_1_preictal_segment_0001.mat');
+
+idata = interictal_segment_1.data;
+idata_lenght_sec = interictal_segment_1.data_length_sec;
+ichannels = interictal_segment_1.channels;
+isampling_frequency = interictal_segment_1.sampling_frequency;
+isequence = interictal_segment_1.sequence;
+
+pdata = preictal_segment_1.data;
+pdata_lenght_sec = preictal_segment_1.data_length_sec;
+pchannels = preictal_segment_1.channels;
+psampling_frequency = preictal_segment_1.sampling_frequency;
+psequence = preictal_segment_1.sequence;
+
+keyboard();
