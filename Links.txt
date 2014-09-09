@@ -1,0 +1,9 @@
+https://www.gnu.org/software/octave/doc/interpreter/
+https://www.gnu.org/software/octave/doc/interpreter/Timing-Utilities.html
+http://www.delorie.com/gnu/docs/octave/octave_162.html
+http://www.tjhsst.edu/~sherbst/electronics/octave/dsp.html
+https://www.youtube.com/channel/UCwumZM5a3wP6nDqm9na1VDw
+http://dadorran.wordpress.com/?s=filtering+matlab+demo
+http://www.mathworks.in/matlabcentral/answers/27702-trouble-with-understanding-frequency-bins-in-matlab-s-documentation-fft-phase-plots
+http://www.mathworks.in/help/matlab/math/fast-fourier-transform-fft.html?s_tid=doc_12b
+https://ccrma.stanford.edu/~jos/fp/Frequency_Response_Plots_plotfr_m.html
