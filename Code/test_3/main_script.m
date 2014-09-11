@@ -15,7 +15,28 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% ===========================================================
-%% ==================== Part 2:Chopping data =================
+%% ==================== Part 2: Preprocess data =================
+
+fprintf('Preprocess data ... \n');
+
+[m,frequency,norm_frequency,fft_data,fft_data_magnitude,fft_data_power]=preprocess_data(data,sampling_frequency);
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+%% ===========================================================
+%% ==================== Part 3:Plot data =================
+
+fprintf('Plotting data samples of full clip x all channels ... \n');
+
+plot_data(data,sampling_frequency,m,frequency,norm_frequency,fft_data,fft_data_magnitude,fft_data_power);
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+%% ===========================================================
+
+%% ==================== Part 4:Chopping data =================
 
 fprintf('Chopping data into 1 minute blocks ... \n');
 
@@ -26,4 +47,5 @@ pause;
 
 %% ===========================================================
 %% ==================== Part 3:Feature Extraction ============
-feature_extraction(data,one_min_blocks);
+
+feature_extraction(data,one_min_blocks,sampling_frequency,m,frequency,fft_data,fft_data_magnitude,fft_data_power);
