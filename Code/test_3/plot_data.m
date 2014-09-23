@@ -71,8 +71,6 @@ for i=1:size(data,1)
 	xlabel('Normalized Frequency');
 	ylabel('Power');
 	hold on;
-
-	keyboard();
 	
 end
 toc()
