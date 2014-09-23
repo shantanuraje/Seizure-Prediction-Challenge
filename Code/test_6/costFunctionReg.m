@@ -21,5 +21,5 @@ for j=1:size((theta))
 		grad(j)=[(1/m)*(sum((hypothesis-training_prediction).*training_data(:,j)))]+[(lambda/m)*theta(j)];
       endif
 end
-
+% keyboard();
 end
