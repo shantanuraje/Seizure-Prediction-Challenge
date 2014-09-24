@@ -29,24 +29,49 @@ test_data_norm = bsxfun(@rdivide, test_data_norm, sigma_test);
 
 training_data=[ones(length(training_prediction),1) training_data_norm];
 test_data=[ones(length(test_prediction),1) test_data_norm];
-
+temp=zeros(1,145);
+temp(1:16)=1;temp(16:)=1;
+training_data=training_data.^[2,,]
 [m n]=size(training_data);
 initial_theta=zeros(n,1);
 
-for i=1:length(training_data)
-	if training_prediction(i)==0
-		plot(1:size(training_data,2),training_data(i,:),'bo')
-	else
-		plot(1:size(training_data,2),training_data(i,:),'rx')
-	endif	
-	hold on;
-end	
+% figure;
+% for i=1:length(training_data)
+% 	if training_prediction(i)==1
+% 		% subplot(2,1,1,"align");
+% 		plot(1:size(training_data,2),training_data(i,:),'rx')
+% 	else
+% 		% subplot(2,1,2,"align")
+% 		plot(1:size(training_data,2),training_data(i,:),'go')
+% 	endif	
+% 	hold on;
+% end	
+
+% for lambda=0:1:10;
+% plot(training_data,training_prediction==1,"ro")
+% hold on;
+% plot(training_data,training_prediction==0,"bx")
+% hold on;
+
+
+pos=find(training_prediction==1);neg=find(training_prediction==0);
+% figure;
+plot(1:length(neg),training_data(neg,:),'b+','LineWidth',2,'MarkerSize',7);
+hold on;
+plot(1:length(pos),training_data(pos,:),'gx','LineWidth',2,'MarkerSize',7);
+
+
+lambda=0;
+J_hist=[];
+[J, grad]=costFunctionReg(initial_theta,training_data,training_prediction,lambda);
+options = optimset('GradObj', 'on', 'MaxIter', 100);
+[theta,J, exit_flag]=fminunc(@(t)(costFunctionReg(t,training_data,training_prediction,lambda)), initial_theta, options);;
+% figure;
+% plot(training_data(4081,:),'gx','LineWidth',2,'MarkerSize',7);
+% hold on;% plot(training_data(neg,1),training_data(neg,2),'ro','MarkerFaceColor','y','MarkerSize',7);
+% p = predict(theta, training_data);
+% fprintf('Train Accuracy: %f\n', mean(double(p)==training_prediction) * 100);
 
 keyboard();
-lambda=0;
-
-[J, grad]=costFunctionReg(initial_theta,training_data,training_prediction,lambda);
-
-options = optimset('GradObj', 'on', 'MaxIter', 10000);
-[theta,J, exit_flag]=fminunc(@(t)(costFunctionReg(t,training_data,training_prediction,lambda)), initial_theta, options);
+% end
 
